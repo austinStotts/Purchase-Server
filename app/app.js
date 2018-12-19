@@ -9,4 +9,5 @@ const app = express();
 app.use(bodyParser.json());
 
 // import getPetByID
-db.getPetByID('03');
+db.getPetByID('01');
+app.listen(4000, _=> {console.log('Roger Roger / port 4000')});
