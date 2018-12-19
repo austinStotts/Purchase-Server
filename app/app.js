@@ -1,13 +1,37 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const colors = require('colors');
 const db = require('./database');
 const app = express();
 
 // use
 app.use(bodyParser.json());
 
-// import getPetByID
-db.getPetByID('01');
+// const pets = [
+//   {
+//     '_id':'02',
+//     'catagory':'big-cat',
+//     'type':'tiger',
+//     'price':'48,000'
+//   },
+//   {
+//     '_id':'03',
+//     'catagory':'big-cat',
+//     'type':'cheeta',
+//     'price':'35,000'
+//   },
+//   {
+//     '_id':'04',
+//     'catagory':'big-cat',
+//     'type':'jaguar',
+//     'price':'50,000'
+//   }
+// ];
+
+app.get('/pet', (req, res) => {
+  const id = req.body.id;
+  db.getPetByID(id, data => {
+    res.send(data);
+  })
+})
+
 app.listen(4000, _=> {console.log('Roger Roger / port 4000')});
