@@ -5,21 +5,15 @@
 // [1] - 'family' ex: felidae;
 // [2] - 'genus' ex: panthera;
 // [3] - 'no.' ex: Tiger... just the count of that 'family' of animal;
-
 //                 [0]      [1]     [2]    [3]
 // ex: |1137| -> Mammal, Felidae, Puma, Cougar... this is a Cougar
-
+//
 // > CLASS chart:
-
 // 1 -> Mammal
 // 2 -> Aves 'birds'
 // 3 -> Actinopterygii 'deep sea fish'
 // 4 -> Reptilia
-// 5 -> 
-// 6 -> 
-// 7 -> 
-// 8 -> 
-// 9 ->
+
 
 
 const pets = [
@@ -848,6 +842,7 @@ const pets = [
     "price":"109,880"
   },
 ];
+
 
 module.exports = {
   pets
