@@ -7,11 +7,14 @@ const data = require('../data');
 // use
 app.use(bodyParser.json());
 
-app.get('/pet', (req, res) => {
-  console.log('GET REQUEST')
+app.get('/buy', (req, res) => {
   const id = req.body.pet_id;
-  db.deleteOneFromDB(id, (err,data) => {
-    res.send(data);
+  console.log('\n -> Get Request on "/buy"\n -> pet_id: ', id);
+  db.getPetByID(id, (err, data) => {
+    if(err) {}
+    else {
+      res.status(200).send(data);
+    }
   })
 })
 
