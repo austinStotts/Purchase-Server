@@ -7,7 +7,7 @@ const client = new mongodb.MongoClient(url, {useNewUrlParser:true});
 const getPetByID = (id, callback) => {
   client.connect(err => {
     const collection = client.db('purchase').collection('pets');
-    collection.find({_id: id}).toArray().then(data => {
+    collection.find({pet_id: id}).toArray().then(data => {
       //console.log(data[0]);
       callback(data[0]);
       client.close();
