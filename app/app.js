@@ -8,8 +8,9 @@ const data = require('../data');
 app.use(bodyParser.json());
 
 app.get('/pet', (req, res) => {
+  console.log('GET REQUEST')
   const id = req.body.pet_id;
-  db.getPetByID(id, data => {
+  db.deleteOneFromDB(id, (err,data) => {
     res.send(data);
   })
 })

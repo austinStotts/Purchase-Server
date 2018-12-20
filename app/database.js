@@ -5,7 +5,7 @@ const client = new mongodb.MongoClient(url, {useNewUrlParser:true});
 
 
 // Get Pet By ID
-const getPetByID = (id, callback) => {
+const getPetByID = (id, callback = () => {console.log('no callback')}) => {
   client.connect(err => {
     // if err connecting
     if (err) {
@@ -26,7 +26,7 @@ const getPetByID = (id, callback) => {
 
 
 // add one pet to DB
-const addOneToDB = (object, callback) => {
+const addOneToDB = (object, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
     // if err connecting
     if (err) {
@@ -37,7 +37,7 @@ const addOneToDB = (object, callback) => {
     else {
       const collection = client.db('purchase').collection('pets');
       collection.insertOne(object)
-      .then(callback(null, 'all good'))
+      .then(callback(null, 'success'))
       .catch(err => callback(err))
     }
     client.close();
@@ -46,22 +46,44 @@ const addOneToDB = (object, callback) => {
 
 
 // add array of pets to DB
-const addManyToDB = (array, callback) => {
+const addManyToDB = (array, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
     if (err) {
       console.log('ERROR add one to DB');
       callback(err);
     } else {
       const collection = client.db('purchase').collection('pets');
-      collection.insertMany(array);
-      callback('all good');
+      collection.insertMany(array)
+      .then(res => callback(null,res))
+      .catch(err => callback(err))
     }
     client.close();
   });
 };
 
+
+const deleteOneFromDB = (object, callback = _=> {console.log('no callback')}) => {
+  client.connect(err => {
+    if(err) {
+      console.log('ERROR remove one from DB');
+      callback(err);
+    } else {
+      const collection = client.db('purchase').collection('pets');
+      collection.deleteOne({pet_id:object})
+      .then(res => {
+        console.log("removed with no err")
+        callback(null,res);
+      })
+      .catch(err => console.log(err))
+    }
+    client.close();
+  })
+};
+
+
 module.exports = {
   getPetByID,
   addOneToDB,
-  addManyToDB
+  addManyToDB,
+  deleteOneFromDB
 }

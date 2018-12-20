@@ -1,7 +1,30 @@
 const db = require('../app/database');
 
-test('can store pet object in database.', _=> {
-  db.addOneToDB({'_id':'05','catagory':'big-cat','type':'cougar','price':'23,000'}, _=> {
-    db.getPetByID('05', data => {expect(data.type).toBe('cougar')})
+
+const pet = {
+  "pet_id":"9999",
+  "class":"mammal",
+  "family":"important",
+  "genus":"gross",
+  "species":"human",
+  "price":"infinity"
+}
+
+beforeEach(() => {
+  db.addOneToDB(pet);
+});
+
+afterEach(() => {
+  db.deleteOneFromDB(pet.pet_id);
+});
+
+test('can get pet object from database', done => {
+  db.getPetByID(pet.pet_id, (err, data) => {
+    expect(data.species).toEqual('human');
+    expect(data.price).toEqual('infinity');
+    expect(data.genus).toEqual('gross');
+    expect(data.family).toEqual('important');
+    expect(data.class).toEqual('mammal');
   })
+  done();
 })

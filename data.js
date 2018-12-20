@@ -284,7 +284,7 @@ const pets = [
     "class":"mammal",
     "family":"Camelidae",
     "genus":"Lama",
-    "species":"Lama",
+    "species":"Llama",
     "price":"22,250",
   },
   {
@@ -416,7 +416,7 @@ const pets = [
     "price":"67,975",
   },
   {
-    "pet_id":"18249",
+    "pet_id":"18250",
     "class":"mammal",
     "family":"Hominidae",
     "genus":"Gorilla",
@@ -740,7 +740,7 @@ const pets = [
     "class":"Reptilia",
     "family":"Boidae",
     "genus":"Eunectes",
-    "species":"Eunectes Beniensis",
+    "species":"Bolivian Anaconda",
     "price":"17,470",
   },
   {
