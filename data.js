@@ -242,9 +242,9 @@ const pets = [
   {
     "pet_id":"14128",
     "class":"mammal",
-    "family":"Equidae",
-    "genus":"Equus",
-    "species":"Tarpan",
+    "family":"Ursidae",
+    "genus":"Ursus",
+    "species":"Kodiak Brown Bear",
     "price":"23,300",
   },
   {
@@ -482,10 +482,10 @@ const pets = [
   {
     "pet_id":"19357",
     "class":"mammal",
-    "family":"Ursidae",
-    "genus":"Ursus",
-    "species":"Brown Bear",
-    "price":"73,755",
+    "family":"Phascolarctidae",
+    "genus":"Phascolarctos",
+    "species":"Koala Bear",
+    "price":"42,450",
   },
   {
     "pet_id":"19358",
