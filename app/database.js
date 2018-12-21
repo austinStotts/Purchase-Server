@@ -15,9 +15,9 @@ const getPetByID = (id, callback = () => {console.log('no callback')}) => {
     // if no err connecting
     else {
       const collection = client.db('purchase').collection('pets');
-      collection.find({pet_id: id}).toArray()
+      collection.findOne({pet_id: id}).toArray()
       .then(data => {
-        callback(null, data[0]);
+        callback(null, data);
       })
       .catch(err => callback(err));
     }
