@@ -15,6 +15,7 @@ const getPetByID = (id, callback = () => {console.log('no callback')}) => {
     // if no err connecting
     else {
       const collection = client.db('purchase').collection('pets');
+      // findOne returns an object not an array of objects
       collection.findOne({pet_id: id}).toArray()
       .then(data => {
         callback(null, data);
