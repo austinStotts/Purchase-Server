@@ -23,7 +23,6 @@ const getPetByID = (id, callback = () => {console.log('no callback')}) => {
       .catch(err => callback(err));
     }
   });
-  client.close();
 };
 
 // add one pet to DB

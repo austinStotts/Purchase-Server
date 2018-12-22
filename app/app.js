@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./database');
-const app = express();
-const data = require('../data');
+const mongo = require('mongodb');
 const cors = require('cors');
+const app = express();
 
 // use
-app.use(bodyParser.json({strict:false}));
+app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/buy', (req, res) => {
@@ -14,7 +14,7 @@ app.get('/buy', (req, res) => {
   console.log('\n -> Get Request on "/buy"\n -> pet_id: ', id);
   db.getPetByID(id, (err, data) => {
     // if err || data object is empty
-    if(err || !data) { 
+    if(err || !data) {
       res.status(404).send();
     }
     else {
