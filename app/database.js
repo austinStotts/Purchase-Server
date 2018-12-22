@@ -3,7 +3,6 @@ const key = require('../key');
 const url = `mongodb+srv://austinAdmin:${key.key}@austintestcluster-mdigu.mongodb.net/test?retryWrites=true`
 const client = new mongodb.MongoClient(url, {useNewUrlParser:true});
 
-
 // Get Pet By ID
 const getPetByID = (id, callback = () => {console.log('no callback')}) => {
   client.connect(err => {
@@ -16,15 +15,16 @@ const getPetByID = (id, callback = () => {console.log('no callback')}) => {
     else {
       const collection = client.db('purchase').collection('pets');
       // findOne returns an object not an array of objects
-      collection.findOne({pet_id: id}).toArray()
+      // it actually returns a promise that resolves to an object
+      collection.findOne({pet_id: id})
       .then(data => {
         callback(null, data);
       })
       .catch(err => callback(err));
     }
   });
+  client.close();
 };
-
 
 // add one pet to DB
 const addOneToDB = (object, callback = _=> {console.log('no callback')}) => {
@@ -45,7 +45,6 @@ const addOneToDB = (object, callback = _=> {console.log('no callback')}) => {
   });
 };
 
-
 // add array of pets to DB
 const addManyToDB = (array, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
@@ -61,7 +60,6 @@ const addManyToDB = (array, callback = _=> {console.log('no callback')}) => {
     client.close();
   });
 };
-
 
 const deleteOneFromDB = (object, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
@@ -80,7 +78,6 @@ const deleteOneFromDB = (object, callback = _=> {console.log('no callback')}) =>
     client.close();
   })
 };
-
 
 module.exports = {
   getPetByID,
