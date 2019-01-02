@@ -59,7 +59,6 @@ const addManyToDB = (array, callback = _=> {console.log('no callback')}) => {
     client.close();
   });
 };
-
 const deleteOneFromDB = (object, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
     if(err) {

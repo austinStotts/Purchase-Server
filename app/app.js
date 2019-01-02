@@ -23,4 +23,4 @@ app.get('/buy', (req, res) => {
   })
 })
 
-app.listen(4000, _=> {console.log('Roger Roger / port 4000')});
+app.listen(process.env.PORT || "4002", _=> {console.log('Roger Roger / port 4002')});
