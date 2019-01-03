@@ -4,8 +4,9 @@
   "description": "Egg Stream comment section",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon ./app/app.js",
-    "test": "jest --detectOpenHandles"
+    "server": "node ./app/app.js",
+    "test": "jest --detectOpenHandles",
+    "start": "npm i; node./app/app.js"
   },
   "repository": {
     "type": "git",

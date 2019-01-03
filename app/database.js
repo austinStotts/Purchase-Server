@@ -1,5 +1,5 @@
 const mongodb = require('mongodb');
-const key = require('../key');
+const key = require('../key') || {key:'05110511as'};
 const url = `mongodb+srv://austinAdmin:${key.key}@austintestcluster-mdigu.mongodb.net/test?retryWrites=true`
 const client = new mongodb.MongoClient(url, {useNewUrlParser:true});
 
@@ -59,6 +59,8 @@ const addManyToDB = (array, callback = _=> {console.log('no callback')}) => {
     client.close();
   });
 };
+
+// delete one pet from DB
 const deleteOneFromDB = (object, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
     if(err) {
