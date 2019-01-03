@@ -1,5 +1,5 @@
 const mongodb = require('mongodb');
-const key = require('../key') || {key:'05110511as'};
+const key = {key:'05110511as'};
 const url = `mongodb+srv://austinAdmin:${key.key}@austintestcluster-mdigu.mongodb.net/test?retryWrites=true`
 const client = new mongodb.MongoClient(url, {useNewUrlParser:true});
 
