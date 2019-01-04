@@ -23,4 +23,9 @@ app.get('/buy', (req, res) => {
   })
 })
 
+app.get('/eric/:id', (req, res) => { // do this with pet_id <-- !¡!
+  console.log(req.params.id);
+  res.send(req.params.id)
+})
+
 app.listen(process.env.PORT || "4002", _=> {console.log('Roger Roger / port 4002')});
