@@ -6,6 +6,8 @@
   "scripts": {
     "server": "node ./app/app.js",
     "test": "jest --detectOpenHandles",
+    "setup": "pm2 deploy ecosystem.config.js production setup",
+    "production": "pm2 deploy ecosystem.config.js production",
     "start": "npm i; node./app/app.js"
   },
   "repository": {
