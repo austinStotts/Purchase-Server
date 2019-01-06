@@ -4,7 +4,7 @@
   "description": "Egg Stream comment section",
   "main": "index.js",
   "scripts": {
-    "server": "node ./app/app.js",
+    "server": "nodemon ./app/app.js",
     "test": "jest --detectOpenHandles",
     "setup": "pm2 deploy ecosystem.config.js production setup",
     "production": "pm2 deploy ecosystem.config.js production",

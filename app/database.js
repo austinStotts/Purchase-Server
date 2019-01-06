@@ -1,7 +1,7 @@
 const mongodb = require('mongodb');
 const key = {key:'05110511as'};
-const url = `mongodb+srv://austinAdmin:${key.key}@austintestcluster-mdigu.mongodb.net/test?retryWrites=true`
-const client = new mongodb.MongoClient(url, {useNewUrlParser:true});
+const url = `mongodb://austinAdmin:${key.key}@austintestcluster-shard-00-00-mdigu.mongodb.net:27017,austintestcluster-shard-00-01-mdigu.mongodb.net:27017,austintestcluster-shard-00-02-mdigu.mongodb.net:27017/test?ssl=true&replicaSet=AustinTestCluster-shard-0&authSource=admin&retryWrites=true`
+const client = new mongodb.MongoClient(url);
 
 // Get Pet By ID
 const getPetByID = (id, callback = () => {console.log('no callback')}) => {
@@ -64,7 +64,7 @@ const addManyToDB = (array, callback = _=> {console.log('no callback')}) => {
 const deleteOneFromDB = (object, callback = _=> {console.log('no callback')}) => {
   client.connect(err => {
     if(err) {
-      console.log('ERROR remove one from DB');
+      console.log('ERROR delete one from DB');
       callback(err);
     } else {
       const collection = client.db('purchase').collection('pets');
